@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate qr</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3" style="">
+    <form novalidate="novalidate" th:action="@{/create-qr}" th:object="${qrCodeDto}" th:method="POST"
+          class="form">
+        <div class="form-group">
+
+            <label for="name">Name</label>
+            <input
+                    class="form-control mt-2"
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="name"
+                    th:classappend="${nameError != null ? 'is-invalid' : ''}"
+            />
+            <div
+                    class="alert alert-warning"
+                    th:if="${nameError != null}"
+            > <span th:text="${nameError}"></span>
+            </div><br/>
+
+            <label for="qrText">QR Text</label>
+            <input
+                    class="form-control mt-2"
+                    type="text"
+                    name="qrText"
+                    id="qrText"
+                    placeholder="qrText"
+                    th:classappend="${qrTextError != null ? 'is-invalid' : ''}"
+            />
+            <div
+                    class="alert alert-warning"
+                    th:if="${qrTextError != null}"
+            > <span th:text="${qrTextError}"></span>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" value="Generate QR">
+
+    </form>
+</div>
+</body>
+</html>

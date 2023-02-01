@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>QR</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+    <img id="ItemPreview" th:src="@{${qr}}"><br/><br/><br/>
+    <form th:method="GET" th:action="@{/}">
+        <a class="btn btn-primary" th:href="@{${qr}}" role="button">Download</a>
+        <input type="submit" class="btn btn-primary" value="Home">
+    </form>
+</div>
+</body>
+</html>
