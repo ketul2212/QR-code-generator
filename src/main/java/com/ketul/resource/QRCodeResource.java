@@ -16,11 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -36,7 +32,7 @@ public class QRCodeResource {
     }
 
     @PostMapping("/create-qr")
-    public String createQr(@ModelAttribute("dto") QRCodeDto dto, Model model) throws IOException {
+    public String createQr(@ModelAttribute("qRCodeDto") QRCodeDto dto, Model model) throws IOException {
         log.info("QRCodeDto : - " + dto);
         if(dto.getName().trim().isEmpty() && dto.getQrText().trim().isEmpty()) {
             model.addAttribute("nameError", "name can not be empty");

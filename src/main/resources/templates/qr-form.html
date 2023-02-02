@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container mt-3" style="">
-    <form novalidate="novalidate" th:action="@{/create-qr}" th:object="${qrCodeDto}" th:method="POST"
+    <form novalidate="novalidate" th:action="@{/create-qr}" th:object="${qRCodeDto}" th:method="POST"
           class="form">
         <div class="form-group">
 
@@ -20,7 +20,7 @@
             <input
                     class="form-control mt-2"
                     type="text"
-                    name="name"
+                    th:field="*{name}"
                     id="name"
                     placeholder="name"
                     th:classappend="${nameError != null ? 'is-invalid' : ''}"
@@ -35,7 +35,7 @@
             <input
                     class="form-control mt-2"
                     type="text"
-                    name="qrText"
+                    th:field="*{qrText}"
                     id="qrText"
                     placeholder="qrText"
                     th:classappend="${qrTextError != null ? 'is-invalid' : ''}"
